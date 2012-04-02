@@ -1,0 +1,3 @@
+git add test2.js
+git commit -am "commit message"
+git push origin master
