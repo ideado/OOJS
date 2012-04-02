@@ -1,6 +1,6 @@
 git add test2.js
-git commit -am "commit message" => commit local (nu e neaparat nevoie sa fiu in retea :) )
-git push origin master          => commit pe GITHUB :)
+git commit -am "commit message" => commit local (only local, don't need a network connection, as opposed to svn)
+git push origin master          => push on GITHUB 
 
 
 
