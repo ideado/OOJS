@@ -74,26 +74,20 @@ my.toString();
 Shape.prototype.firstname='first name';
 my.firstname;
 TwoDShape.prototype.firstname;
-
 /*-------------------------------
     inheriting the prototype only
 ---------------------------------*/
-
 function Shape(){};
 //augment the prototype of Shape
 Shape.prototype.name='shape';
 Shape.prototype.toString=function()
 {return this.name;}
-
-
 function TwoDShape(){}
 //take care of the inheritance first
 TwoDShape.prototype=Shape.prototype;
 TwoDShape.prototype.constructor=TwoDShape;
 //augment the prototype
 TwoDShape.prototype.name='2D Shape';
-
-
 function Triangle(size,height)
 {
     this.size=size;
@@ -109,4 +103,44 @@ Triangle.prototype.getArea=function()
 }
 var my=new Triangle(5,10);
 my.getArea();
+var s=new Shape();
+s.name;
+/*-------------------------------
+    inheritance through 
+    a temporary constructor
+---------------------------------*/
+function Shape(){}
+//augment prototype
+Shape.prototype.name='shape';
+Shape.prototype.toString=function(){return this.name;}
+function TwoDShape(){}
+var F=function(){}
+F.prototype=Shape.prototype;
+TwoDShape.prototype=new F();
+TwoDShape.prototype.constructor=TwoDShape;
+TwoDShape.prototype.name="2D shape";
+function Triangle(size,height)
+{
+    this.size=size;
+    this.height=height;
+}
+var F=function(){};
+F.prototype=TwoDShape.prototype;
+Triangle.prototype=new F();
+Triangle.prototype.constructor=Triangle;
+Triangle.prototype.name='Triangle';
+Triangle.prototype.getArea=function()
+{
+    return this.size * this.height/2;
+};
+var my=new Triangle(5,10);
+my.getArea();
+my.toString();
+my.__proto__.__proto__.__proto__.constructor;
+my.__proto__.constructor;
+my.__proto__.__proto__.constructor;
+my.__proto__.__proto__.__proto__.constructor;
 
+/*--------------------------------------------
+Uber—Access to the Parent from a Child Object
+--------------------------------------------*/
