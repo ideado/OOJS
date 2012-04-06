@@ -180,4 +180,43 @@ var my = new Triangle(5, 10);
 my.toString();
 /*------------------------------------------------
 Isolating the Inheritance Part into a Function
---------------------------------------------------*/  
+--------------------------------------------------*/
+function extend(Child,Parent)
+{
+    var f=function(){};
+    f.prototype=Parent.prototype;
+    Child.prototype=new f();
+    Child.prototype.constructor=Child;
+    Child.uber=Parent.prototype;
+}
+function extend2(Child,Parent)
+{
+    var p=Parent.prototype;
+    var c = Child.prototype;
+    for(var i in p)
+    {
+        c[i]=p[i];
+    }
+    c.uber=p;
+}
+var Shape=function(){}
+var TwoDShape=function(){}
+Shape.prototype.name='shape';
+Shape.prototype.toString=function(){return this.name;};
+extend(TwoDShape,Shape);
+var td=new TwoDShape();
+td.name;
+TwoDShape.prototype.name;
+td.__proto__.name;
+td.hasOwnProperty('name');
+td.__proto__.hasOwnProperty('name');
+TwoDShape.__proto__.prototype;
+TwoDShape.__proto__.hasOwnProperty('name');
+extend2(TwoDShape,Shape);
+var td=new TwoDShape();
+td.name;
+td.__proto__.hasOwnProperty('name');
+td
+/*----------------------------------------
+Heads-up When Copying by Reference
+------------------------------------------*/
