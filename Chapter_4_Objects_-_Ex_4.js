@@ -1,7 +1,11 @@
 /*-------------------------------------------------------
     Chapter 4:Objects - Ex. 4
 -------------------------------------------------------
-Imagine the String() constructor didn't exist. Create a constructor function MyString() that acts like String() as closely as possible. You're not allowed to use any built-in string methods or properties, and remember that String() doesn't exist.
+Imagine the String() constructor didn't exist. Create a 
+constructor function MyString() that acts like String() as 
+closely as possible. You're not allowed to use any built-in
+string methods or properties, and remember that String()
+doesn't exist.
 -------------------------------------------------------*/
 function MyString(string)
 {
